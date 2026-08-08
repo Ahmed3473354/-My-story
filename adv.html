@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قصص مغامرات</title>
+<style>
+
+.hero{
+    width:90%;
+    max-width:1400px;
+    margin:40px auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+
+.card{
+    width:280px;
+    text-align:center;
+    margin:auto;
+}
+
+
+.card img{
+
+    width:280px;
+    height:290px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+}
+
+
+/* زر القصة */
+
+.card > button:not(.heart){
+
+    width:280px;
+
+    margin-top:10px;
+
+    background:#1d4de8;
+
+    color:white;
+
+    padding:10px;
+
+    border-radius:9px;
+
+    border:none;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+
+.card > button:not(.heart):hover{
+
+    background:#1a40bf;
+
+}
+
+
+
+/* قلب المفضلة */
+
+.heart{
+
+    width:45px;
+
+    height:45px;
+
+    margin-top:10px;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:#e91e63;
+
+    border:2px solid #e91e63;
+
+    font-size:25px;
+
+    cursor:pointer;
+
+}
+
+
+.heart:hover{
+
+    background:#e91e63;
+
+    color:white;
+
+}
+
+
+
+/* البحث */
+
+#search{
+
+    display:block;
+
+    width:60%;
+
+    max-width:500px;
+
+    margin:30px auto;
+
+    padding:12px;
+
+    border:2px solid #1d4de8;
+
+    border-radius:15px;
+
+    font-size:18px;
+
+    outline:none;
+
+}
+
+
+
+/* التابلت */
+
+@media(max-width:900px){
+
+    .hero{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+
+
+/* الموبايل */
+
+@media(max-width:600px){
+
+    .hero{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .card{
+
+        width:100%;
+
+    }
+
+
+    .card img,
+
+    .card > button:not(.heart){
+
+        width:100%;
+
+    }
+
+
+    #search{
+
+        width:90%;
+
+    }
+
+}
+
+#mostViews,
+#allStories{
+    padding:12px 22px;
+    margin:15px 8px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:bold;
+    color:white;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+#mostViews{
+    background:linear-gradient(135deg,#ff9800,#ff5722);
+}
+
+#mostViews:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(255,87,34,.4);
+}
+
+#allStories{
+    background:linear-gradient(135deg,#2196f3,#3f51b5);
+}
+
+#allStories:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(33,150,243,.4);
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin:25px 0;
+}
+
+.share{
+    width:120px;
+    margin-top:10px;
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    background:#22c55e;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.share:hover{
+    background:#16a34a;
+}
+
+</style>
+
+</head>
+<body>
+
+<input type="text" id="search" placeholder="ابحث عن قصة...">
+
+<div class="buttons">
+    <button id="mostViews">🔥 الأكثر مشاهدة</button>
+    <button id="allStories">📚 كل القصص</button>
+</div>
+
+<div class="hero">
+
+
+
+<div class="card">
+<img src="adv/1.jpg" alt="رجل نجا لمدة 67 يومًا في قلب المحيط">
+<button id="1" data-link="adv/1a.html">لمدة 67 يومًا في قلب المحيط... كيف نجا هذا الرجل من الموت؟</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+
+<div class="card">
+<img src="adv/2.jpg" alt="مغامرة في جليد القارة القطبية">
+<button id="2" data-link="adv/bb.html">المغامرة المستحيلة التي تحدّت جليد القارة القطبية</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+
+<div class="card">
+<img src="adv/3.jpg" alt="رجل يبحث عن مدينة الذهب">
+<button id="3" data-link="adv/cc.html">خرج يبحث عن مدينة الذهب... ثم اختفى إلى الأبد</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+
+<div class="card">
+<img src="adv/4.jpg" alt="رحلة إلى أعمق مكان لم تطأه قدم إنسان">
+<button id="4" data-link="adv/dd.html">الرحلة التي قادت إلى أعمق مكان لم تطأه قدم إنسان</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+
+<div class="card">
+<img src="adv/5.jpg" alt="أول إنسان يصل إلى قمة إيفرست">
+<button id="5" data-link="adv/ee.html">كيف وصل أول إنسان إلى قمة إيفرست رغم استحالة المهمة؟</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+
+<div class="card">
+<img src="adv/6.jpg" alt="رجل وحيد في الصحراء الكبرى">
+<button id="6" data-link="adv/ff.html">وحيدًا في الصحراء الكبرى... معركة بقاء لا تُصدق</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+
+<div class="card">
+<img src="adv/7.jpg" alt="معجزة نجاة بين الجبال لمدة 72 يومًا">
+<button id="7" data-link="adv/gg.html">لمدة 72 يومًا بين الجبال... القصة الحقيقية لمعجزة النجاة</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+
+<div class="card">
+<img src="adv/8.jpg" alt="سفينة ابتلعها الجليد وعادت بعد أكثر من قرن">
+<button id="8" data-link="adv/hh.html">السفينة التي ابتلعها الجليد ثم عادت بعد أكثر من قرن</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+
+<div class="card">
+<img src="adv/9.jpg" alt="رحلة بحرية استمرت ثلاث سنوات">
+<button id="9" data-link="adv/ii.html">ثلاث سنوات في البحر... الرحلة التي غيّرت خرائط العالم</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+
+<div class="card">
+<img src="adv/10.jpg" alt="المقبرة الذهبية التي حيّرت العالم">
+<button id="10" data-link="adv/jj.html">المقبرة الذهبية التي حيّرت العالم لآلاف السنين</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+
+<div class="card">
+<img src="adv/11.jpg" alt="المدينة الوردية المفقودة">
+<button id="11" data-link="adv/kk.html">المدينة الوردية المفقودة... كيف عادت للحياة بعد قرون؟</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+
+<div class="card">
+<img src="adv/12.jpg" alt="كنز غارق انتظر 300 عام">
+<button id="12" data-link="adv/ll.html">الكنز الغارق الذي انتظر 300 عام حتى يعثر عليه أحد</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+
+<div class="card">
+<img src="adv/13.jpg" alt="مستكشف داخل غابات الأمازون">
+<button id="13" data-link="adv/mm.html">دخل غابات الأمازون... وما وجده لم يكن في الحسبان</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+
+<div class="card">
+<img src="adv/14.jpg" alt="مدينة كاملة مخبأة داخل الأدغال">
+<button id="14" data-link="adv/nn.html">مدينة كاملة كانت مختبئة داخل الأدغال لقرون</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+
+<div class="card">
+<img src="adv/15.jpg" alt="ناجٍ من سقوط من ارتفاع 10 آلاف متر">
+<button id="15" data-link="adv/oo.html">سقط من ارتفاع 10 آلاف متر... ثم حدثت المعجزة</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+
+<div class="card">
+<img src="adv/16.jpg" alt="رحلة البحث عن مصدر نهر النيل">
+<button id="16" data-link="adv/pp.html">رحلة البحث عن سر نهر النيل التي أرهقت أعظم المستكشفين</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+
+<div class="card">
+<img src="adv/17.jpg" alt="السباق إلى القطب الجنوبي">
+<button id="17" data-link="adv/qq.html">السباق المجنون إلى القطب الجنوبي... من وصل أولًا؟</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+
+<div class="card">
+<img src="adv/18.jpg" alt="العثور على حطام سفينة تيتانيك">
+<button id="18" data-link="adv/rr.html">بعد 73 عامًا... كيف عثروا أخيرًا على حطام تيتانيك؟</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="heart">♡</button>
+<button class="share">📤 مشاركة</button>
+</div>
+```
+
+
+</div>
+
+<script>
+
+// فتح القصة + حفظ آخر قصة + زيادة المشاهدات
+let buttons = document.querySelectorAll(".card button:not(.heart):not(.share)");
+
+buttons.forEach(function(button){
+
+    button.addEventListener("click", function(){
+
+        let link = button.dataset.link;
+
+        localStorage.setItem("lastStory", JSON.stringify({
+            title: button.textContent,
+            image: button.parentElement.querySelector("img").src,
+            link: link
+        }));
+
+        let views = JSON.parse(localStorage.getItem("views")) || {};
+
+        views[link] = (views[link] || 0) + 1;
+
+        localStorage.setItem("views", JSON.stringify(views));
+
+        let viewText = button.parentElement.querySelector(".views");
+        viewText.textContent = "👁️ عدد المشاهدات: " + views[link];
+
+        window.open(link);
+    });
+
+});
+
+
+// البحث
+let search = document.getElementById("search");
+let cards = document.querySelectorAll(".card");
+
+search.addEventListener("input", function(){
+
+    let value = search.value.toLowerCase();
+
+    cards.forEach(function(card){
+
+        let title = card.textContent.toLowerCase();
+
+        if(title.includes(value)){
+            card.style.display = "block";
+        }else{
+            card.style.display = "none";
+        }
+
+    });
+
+});
+
+
+// المفضلة
+let hearts = document.querySelectorAll(".heart");
+
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+hearts.forEach(function(heart){
+
+    let card = heart.parentElement;
+
+    let storyButton = card.querySelector("button:not(.heart):not(.share)");
+
+    let link = storyButton.dataset.link;
+
+    if (favorites.find(item => item.link === link)) {
+        heart.textContent = "♥";
+    }
+
+    heart.addEventListener("click", function(){
+
+        let title = storyButton.textContent;
+        let image = card.querySelector("img").src;
+
+        let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+        let found = favorites.find(function(item){
+            return item.link === link;
+        });
+
+        if(found){
+
+            favorites = favorites.filter(function(item){
+                return item.link !== link;
+            });
+
+            heart.textContent = "♡";
+
+        }else{
+
+            favorites.push({
+                title:title,
+                image:image,
+                link:link
+            });
+
+            heart.textContent = "♥";
+
+        }
+
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+
+    });
+
+});
+
+// عرض عدد المشاهدات عند فتح الصفحة
+document.querySelectorAll(".card").forEach(function(card){
+
+    let button = card.querySelector("button:not(.heart):not(.share)");
+    let viewText = card.querySelector(".views");
+
+    let views = JSON.parse(localStorage.getItem("views")) || {};
+
+    let link = button.dataset.link;
+
+    viewText.textContent = "👁️ عدد المشاهدات: " + (views[link] || 0);
+
+});
+
+
+// ترتيب القصص حسب المشاهدات
+let hero = document.querySelector(".hero");
+let crds = Array.from(document.querySelectorAll(".card"));
+
+document.getElementById("mostViews").onclick = function(){
+
+    let views = JSON.parse(localStorage.getItem("views")) || {};
+
+    crds.sort(function(a, b){
+
+        let linkA = a.querySelector("button:not(.heart):not(.share)").dataset.link;
+        let linkB = b.querySelector("button:not(.heart):not(.share)").dataset.link;
+
+        let viewA = views[linkA] || 0;
+        let viewB = views[linkB] || 0;
+
+        return viewB - viewA;
+
+    });
+
+    crds.forEach(function(card){
+        hero.appendChild(card);
+    });
+
+};
+
+
+// الرجوع للترتيب الأصلي
+document.getElementById("allStories").onclick = function(){
+
+    crds.forEach(function(card){
+        hero.appendChild(card);
+    });
+
+};
+
+// زر المشاركة
+document.querySelectorAll(".share").forEach(function(btn){
+
+    btn.addEventListener("click", async function(e){
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        let card = this.parentElement;
+
+        let storyButton = card.querySelector("button:not(.heart):not(.share)");
+
+        let title = storyButton.textContent;
+        let link = location.origin + "/" + storyButton.dataset.link;
+
+        // إذا كان المتصفح يدعم المشاركة المباشرة
+        if (navigator.share) {
+
+            try {
+                await navigator.share({
+                    title: title,
+                    url: link
+                });
+            } catch (err) {
+                // المستخدم أغلق نافذة المشاركة
+            }
+
+        } else {
+
+            // إذا لم يدعم المشاركة، انسخ الرابط
+            navigator.clipboard.writeText(link);
+            alert("✅ تم نسخ رابط القصة");
+
+        }
+
+    });
+
+});
+
+</script>
+
+<script type="module" src="index.js"></script>
+
+</body>
+</html>

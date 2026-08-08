@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قصص تاريخية</title>
+
+<style>
+
+.hero{
+    width:90%;
+    max-width:1400px;
+    margin:40px auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+
+.card{
+    width:280px;
+    text-align:center;
+    margin:auto;
+}
+
+
+.card img{
+
+    width:280px;
+    height:290px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+}
+
+
+/* زر القصة */
+
+.card > button:not(.heart){
+
+    width:280px;
+
+    margin-top:10px;
+
+    background:#1d4de8;
+
+    color:white;
+
+    padding:10px;
+
+    border-radius:9px;
+
+    border:none;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+
+.card > button:not(.heart):hover{
+
+    background:#1a40bf;
+
+}
+
+
+
+/* قلب المفضلة */
+
+.heart{
+
+    width:45px;
+
+    height:45px;
+
+    margin-top:10px;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:#e91e63;
+
+    border:2px solid #e91e63;
+
+    font-size:25px;
+
+    cursor:pointer;
+
+}
+
+
+.heart:hover{
+
+    background:#e91e63;
+
+    color:white;
+
+}
+
+
+
+/* البحث */
+
+#search{
+
+    display:block;
+
+    width:60%;
+
+    max-width:500px;
+
+    margin:30px auto;
+
+    padding:12px;
+
+    border:2px solid #1d4de8;
+
+    border-radius:15px;
+
+    font-size:18px;
+
+    outline:none;
+
+}
+
+
+
+/* التابلت */
+
+@media(max-width:900px){
+
+    .hero{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+
+
+/* الموبايل */
+
+@media(max-width:600px){
+
+    .hero{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .card{
+
+        width:100%;
+
+    }
+
+
+    .card img,
+
+    .card > button:not(.heart){
+
+        width:100%;
+
+    }
+
+
+    #search{
+
+        width:90%;
+
+    }
+
+}
+
+#mostViews,
+#allStories{
+    padding:12px 22px;
+    margin:15px 8px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:bold;
+    color:white;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+#mostViews{
+    background:linear-gradient(135deg,#ff9800,#ff5722);
+}
+
+#mostViews:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(255,87,34,.4);
+}
+
+#allStories{
+    background:linear-gradient(135deg,#2196f3,#3f51b5);
+}
+
+#allStories:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(33,150,243,.4);
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin:25px 0;
+}
+
+.share{
+    width:120px;
+    margin-top:10px;
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    background:#22c55e;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.share:hover{
+    background:#16a34a;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>📜 قصص تاريخية مذهلة</h1>
+
+<input type="text" id="search" placeholder="ابحث عن قصة...">
+
+<div class="buttons">
+    <button id="mostViews">🔥 الأكثر مشاهدة</button>
+    <button id="allStories">📚 كل القصص</button>
+</div>
+
+<div class="hero">
+
+
+
+<div class="card">
+    <img src="hist/army.jpg" alt="الجيش الذي ابتلعته الصحراء ولم يعثر عليه أحد لقرون">
+    <button id="army" data-link="hist/1army.html">الجيش الذي ابتلعته الصحراء ولم يعثر عليه أحد لقرون</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="hist/city.jpg" alt="المدينة التي اختفى جميع سكانها في ليلة واحدة">
+    <button id="city" data-link="hist/2city.html">المدينة التي اختفى جميع سكانها في ليلة واحدة</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="hist/man.jpg" alt="الرجل الذي كان أغنى من أي ملياردير في التاريخ">
+    <button id="man" data-link="hist/3man.html">الرجل الذي كان أغنى من أي ملياردير في التاريخ</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="hist/dev.jpg" alt="الجهاز الذي صنعه الإغريق قبل 2000 عام وأذهل العلماء">
+    <button id="dev" data-link="hist/4dev.html">الجهاز الذي صنعه الإغريق قبل 2000 عام وأذهل العلماء</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="hist/lib.jpg" alt="المكتبة التي كان يمكن أن تغيّر تاريخ البشرية لو لم تحترق">
+    <button id="lib" data-link="hist/5lib.html">المكتبة التي كان يمكن أن تغيّر تاريخ البشرية لو لم تحترق</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="hist/hir.jpg" alt="الحضارة التي بنت مدنًا عظيمة ثم اختفت بلا أثر">
+    <button id="hir" data-link="hist/6hir.html">الحضارة التي بنت مدنًا عظيمة ثم اختفت بلا أثر</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="hist/thefirst.jpg" alt="أول من وصل إلى أمريكا ولم يكن كولومبوس">
+    <button id="thefirst" data-link="hist/7thefirst.html">أول من وصل إلى أمريكا... ولم يكن كولومبوس</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="hist/sea.jpg" alt="مدينة كاملة مبنية فوق الماء قبل مئات السنين">
+    <button id="sea" data-link="hist/8sea.html">مدينة كاملة مبنية فوق الماء قبل مئات السنين</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="hist/greating.jpg" alt="أعظم خدعة عسكرية خدعت جيشًا كاملًا">
+    <button id="greating" data-link="hist/9greating.html">أعظم خدعة عسكرية خدعت جيشًا كاملًا</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="hist/taon.jpg" alt="الوباء الذي قتل ثلث سكان أوروبا">
+    <button id="taon" data-link="hist/10taon.html">الوباء الذي قتل ثلث سكان أوروبا</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="hist/almabd.jpg" alt="المعبد الذي حيّر علماء الآثار لأنه أقدم من الزراعة">
+    <button id="almabd" data-link="hist/11almabd.html">المعبد الذي حيّر علماء الآثار لأنه أقدم من الزراعة</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="hist/how.jpg" alt="كيف سقطت إمبراطورية قوية بسبب رسائل مزيفة">
+    <button id="haw" data-link="hist/12haw.html">كيف سقطت إمبراطورية قوية بسبب رسائل مزيفة؟</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="hist/alsafena.jpg" alt="السفينة التي غرقت ومعها كنوز لا تقدر بثمن">
+    <button id="alsafena" data-link="hist/13alsafena.html">السفينة التي غرقت ومعها كنوز لا تُقدّر بثمن</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="hist/emp.jpg" alt="الإمبراطور الذي أعلن الحرب على البحر">
+    <button id="emp" data-link="hist/14emp.html">الإمبراطور الذي أعلن الحرب على البحر</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="hist/treas.jpg" alt="الكنز الذي يبحث عنه الناس منذ مئات السنين">
+    <button id="treas" data-link="hist/15treas.html">الكنز الذي يبحث عنه الناس منذ مئات السنين</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="hist/world.jpg" alt="كيف غيّرت رسالة واحدة مصير العالم">
+    <button id="world" data-link="hist/16world.html">كيف غيّرت رسالة واحدة مصير العالم؟</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="hist/exp.jpg" alt="الانفجار الذي دمّر ملايين الأشجار دون أن يترك حفرة">
+    <button id="exp" data-link="hist/17exp.html">الانفجار الذي دمّر ملايين الأشجار دون أن يترك حفرة</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="hist/puzz.jpg" alt="أعظم لغز تاريخي لم يجد له العلماء تفسيرًا">
+    <button id="puzz" data-link="hist/18puzz.html">أعظم لغز تاريخي لم يجد له العلماء تفسيرًا</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+```
+
+
+
+</div>
+
+<script>
+
+// فتح القصة + حفظ آخر قصة + زيادة المشاهدات
+let buttons = document.querySelectorAll(".card button:not(.heart):not(.share)");
+
+buttons.forEach(function(button){
+
+    button.addEventListener("click", function(){
+
+        let link = button.dataset.link;
+
+        localStorage.setItem("lastStory", JSON.stringify({
+            title: button.textContent,
+            image: button.parentElement.querySelector("img").src,
+            link: link
+        }));
+
+        let views = JSON.parse(localStorage.getItem("views")) || {};
+
+        views[link] = (views[link] || 0) + 1;
+
+        localStorage.setItem("views", JSON.stringify(views));
+
+        let viewText = button.parentElement.querySelector(".views");
+        viewText.textContent = "👁️ عدد المشاهدات: " + views[link];
+
+        window.open(link);
+    });
+
+});
+
+
+// البحث
+let search = document.getElementById("search");
+let cards = document.querySelectorAll(".card");
+
+search.addEventListener("input", function(){
+
+    let value = search.value.toLowerCase();
+
+    cards.forEach(function(card){
+
+        let title = card.textContent.toLowerCase();
+
+        if(title.includes(value)){
+            card.style.display = "block";
+        }else{
+            card.style.display = "none";
+        }
+
+    });
+
+});
+
+
+// المفضلة
+let hearts = document.querySelectorAll(".heart");
+
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+hearts.forEach(function(heart){
+
+    let card = heart.parentElement;
+
+    let storyButton = card.querySelector("button:not(.heart):not(.share)");
+
+    let link = storyButton.dataset.link;
+
+    if (favorites.find(item => item.link === link)) {
+        heart.textContent = "♥";
+    }
+
+    heart.addEventListener("click", function(){
+
+        let title = storyButton.textContent;
+        let image = card.querySelector("img").src;
+
+        let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+        let found = favorites.find(function(item){
+            return item.link === link;
+        });
+
+        if(found){
+
+            favorites = favorites.filter(function(item){
+                return item.link !== link;
+            });
+
+            heart.textContent = "♡";
+
+        }else{
+
+            favorites.push({
+                title:title,
+                image:image,
+                link:link
+            });
+
+            heart.textContent = "♥";
+
+        }
+
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+
+    });
+
+});
+
+// عرض عدد المشاهدات عند فتح الصفحة
+document.querySelectorAll(".card").forEach(function(card){
+
+    let button = card.querySelector("button:not(.heart):not(.share)");
+    let viewText = card.querySelector(".views");
+
+    let views = JSON.parse(localStorage.getItem("views")) || {};
+
+    let link = button.dataset.link;
+
+    viewText.textContent = "👁️ عدد المشاهدات: " + (views[link] || 0);
+
+});
+
+
+// ترتيب القصص حسب المشاهدات
+let hero = document.querySelector(".hero");
+let crds = Array.from(document.querySelectorAll(".card"));
+
+document.getElementById("mostViews").onclick = function(){
+
+    let views = JSON.parse(localStorage.getItem("views")) || {};
+
+    crds.sort(function(a, b){
+
+        let linkA = a.querySelector("button:not(.heart):not(.share)").dataset.link;
+        let linkB = b.querySelector("button:not(.heart):not(.share)").dataset.link;
+
+        let viewA = views[linkA] || 0;
+        let viewB = views[linkB] || 0;
+
+        return viewB - viewA;
+
+    });
+
+    crds.forEach(function(card){
+        hero.appendChild(card);
+    });
+
+};
+
+
+// الرجوع للترتيب الأصلي
+document.getElementById("allStories").onclick = function(){
+
+    crds.forEach(function(card){
+        hero.appendChild(card);
+    });
+
+};
+
+// زر المشاركة
+document.querySelectorAll(".share").forEach(function(btn){
+
+    btn.addEventListener("click", async function(e){
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        let card = this.parentElement;
+
+        let storyButton = card.querySelector("button:not(.heart):not(.share)");
+
+        let title = storyButton.textContent;
+        let link = location.origin + "/" + storyButton.dataset.link;
+
+        // إذا كان المتصفح يدعم المشاركة المباشرة
+        if (navigator.share) {
+
+            try {
+                await navigator.share({
+                    title: title,
+                    url: link
+                });
+            } catch (err) {
+                // المستخدم أغلق نافذة المشاركة
+            }
+
+        } else {
+
+            // إذا لم يدعم المشاركة، انسخ الرابط
+            navigator.clipboard.writeText(link);
+            alert("✅ تم نسخ رابط القصة");
+
+        }
+
+    });
+
+});
+
+</script>
+
+<script type="module" src="index.js"></script>
+
+</body>
+</html>

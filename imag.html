@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قصص خيالية</title>
+
+<style>
+
+.hero{
+    width:90%;
+    max-width:1400px;
+    margin:40px auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+
+.card{
+    width:280px;
+    text-align:center;
+    margin:auto;
+}
+
+
+.card img{
+
+    width:280px;
+    height:290px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+}
+
+
+/* زر القصة */
+
+.card > button:not(.heart){
+
+    width:280px;
+
+    margin-top:10px;
+
+    background:#1d4de8;
+
+    color:white;
+
+    padding:10px;
+
+    border-radius:9px;
+
+    border:none;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+
+.card > button:not(.heart):hover{
+
+    background:#1a40bf;
+
+}
+
+
+
+/* قلب المفضلة */
+
+.heart{
+
+    width:45px;
+
+    height:45px;
+
+    margin-top:10px;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:#e91e63;
+
+    border:2px solid #e91e63;
+
+    font-size:25px;
+
+    cursor:pointer;
+
+}
+
+
+.heart:hover{
+
+    background:#e91e63;
+
+    color:white;
+
+}
+
+
+
+/* البحث */
+
+#search{
+
+    display:block;
+
+    width:60%;
+
+    max-width:500px;
+
+    margin:30px auto;
+
+    padding:12px;
+
+    border:2px solid #1d4de8;
+
+    border-radius:15px;
+
+    font-size:18px;
+
+    outline:none;
+
+}
+
+
+
+/* التابلت */
+
+@media(max-width:900px){
+
+    .hero{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+
+
+/* الموبايل */
+
+@media(max-width:600px){
+
+    .hero{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .card{
+
+        width:100%;
+
+    }
+
+
+    .card img,
+
+    .card > button:not(.heart){
+
+        width:100%;
+
+    }
+
+
+    #search{
+
+        width:90%;
+
+    }
+
+}
+
+#mostViews,
+#allStories{
+    padding:12px 22px;
+    margin:15px 8px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:bold;
+    color:white;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+#mostViews{
+    background:linear-gradient(135deg,#ff9800,#ff5722);
+}
+
+#mostViews:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(255,87,34,.4);
+}
+
+#allStories{
+    background:linear-gradient(135deg,#2196f3,#3f51b5);
+}
+
+#allStories:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(33,150,243,.4);
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin:25px 0;
+}
+
+.share{
+    width:120px;
+    margin-top:10px;
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    background:#22c55e;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.share:hover{
+    background:#16a34a;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>قصص خياليه مدهشة</h1>
+
+<input type="text" id="search" placeholder="ابحث عن قصة...">
+
+<div class="buttons">
+    <button id="mostViews">🔥 الأكثر مشاهدة</button>
+    <button id="allStories">📚 كل القصص</button>
+</div>
+
+<div class="hero">
+
+    <div class="card">
+<img src="disc/city.jpg" alt="مدينة لا ينام فيها أحد أبدًا">
+<button id="city" data-link="imag/1city.html">مدينة لا ينام فيها أحد أبدًا</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="disc/child.jpg" alt="الطفل الذي وجد بابًا إلى عالم التنانين">
+<button id="child" data-link="imag/2child.html">الطفل الذي وجد بابًا إلى عالم التنانين</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="disc/forest.jpg" alt="الغابة التي تبتلع الزمن">
+<button id="forest" data-link="imag/3forest.html">الغابة التي تبتلع الزمن</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="disc/cas.jpg" alt="سر القلعة العائمة فوق السحاب">
+<button id="cas" data-link="imag/4cas.html">سر القلعة العائمة فوق السحاب</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="disc/mirror.jpg" alt="المرآة التي تكشف المستقبل بثمن مخيف">
+<button id="mirror" data-link="imag/5mirror.html">المرآة التي تكشف المستقبل... بثمنٍ مخيف</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="disc/wiz.jpg" alt="آخر ساحر على وجه الأرض">
+<button id="wiz" data-link="imag/6wiz.html">آخر ساحر على وجه الأرض</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="disc/isl.jpg" alt="جزيرة تختفي كلما اقترب منها أحد">
+<button id="isl" data-link="imag/7isl.html">جزيرة تختفي كلما اقترب منها أحد</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="disc/dra.jpg" alt="التنين الذي رفض إحراق البشر">
+<button id="dra" data-link="imag/8dra.html">التنين الذي رفض إحراق البشر</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="disc/king.jpg" alt="رحلة إلى المملكة المدفونة تحت البحر">
+<button id="king" data-link="imag/9king.html">رحلة إلى المملكة المدفونة تحت البحر</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="disc/book.jpg" alt="الكتاب الذي يغير نهاية كل من يقرأه">
+<button id="book" data-link="imag/10book.html">الكتاب الذي يغيّر نهاية كل من يقرأه</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="disc/moon.jpg" alt="ليلة استيقظ فيها القمر وتحدث مع البشر">
+<button id="moon" data-link="imag/11moon.html">ليلة استيقظ فيها القمر وتحدث مع البشر</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="disc/prince.jpg" alt="الأمير الذي تحول إلى غراب أسود">
+<button id="prince" data-link="imag/12prince.html">الأمير الذي تحوّل إلى غراب أسود</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="disc/planet.jpg" alt="سر الكوكب الذي لا تشرق عليه الشمس أبدًا">
+<button id="planet" data-link="imag/13plannet.html">سر الكوكب الذي لا تشرق عليه الشمس أبدًا</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="disc/galaxy.jpg" alt="رحلة إلى المجرة التي اختفت من الخرائط">
+<button id="galaxy" data-link="imag/14galaxy.html">رحلة إلى المجرة التي اختفت من الخرائط</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="disc/boy.jpg" alt="الفتى الذي تلقى رسالة من حضارة تعيش بين النجوم">
+<button id="boy" data-link="imag/15boy.html">الفتى الذي تلقى رسالة من حضارة تعيش بين النجوم</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="disc/witch.jpg" alt="عندما سرقت الساحرة ألوان العالم">
+<button id="witch" data-link="imag/16witch.html">عندما سرقت الساحرة ألوان العالم</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="disc/shadow.jpg" alt="مملكة الظلال التي لا يعرفها أحد">
+<button id="shadow" data-link="imag/17shadow.html">مملكة الظلال التي لا يعرفها أحد</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="disc/girl.jpg" alt="الفتاة التي أصبحت ملكة التنانين في يوم واحد">
+<button id="girl" data-link="imag/18girl.html">الفتاة التي أصبحت ملكة التنانين في يوم واحد</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+</div>
+
+<script>
+
+// فتح القصة + حفظ آخر قصة + زيادة المشاهدات
+let buttons = document.querySelectorAll(".card button:not(.heart):not(.share)");
+
+buttons.forEach(function(button){
+
+    button.addEventListener("click", function(){
+
+        let link = button.dataset.link;
+
+        localStorage.setItem("lastStory", JSON.stringify({
+            title: button.textContent,
+            image: button.parentElement.querySelector("img").src,
+            link: link
+        }));
+
+        let views = JSON.parse(localStorage.getItem("views")) || {};
+
+        views[link] = (views[link] || 0) + 1;
+
+        localStorage.setItem("views", JSON.stringify(views));
+
+        let viewText = button.parentElement.querySelector(".views");
+        viewText.textContent = "👁️ عدد المشاهدات: " + views[link];
+
+        window.open(link);
+    });
+
+});
+
+
+// البحث
+let search = document.getElementById("search");
+let cards = document.querySelectorAll(".card");
+
+search.addEventListener("input", function(){
+
+    let value = search.value.toLowerCase();
+
+    cards.forEach(function(card){
+
+        let title = card.textContent.toLowerCase();
+
+        if(title.includes(value)){
+            card.style.display = "block";
+        }else{
+            card.style.display = "none";
+        }
+
+    });
+
+});
+
+
+// المفضلة
+let hearts = document.querySelectorAll(".heart");
+
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+hearts.forEach(function(heart){
+
+    let card = heart.parentElement;
+
+    let storyButton = card.querySelector("button:not(.heart):not(.share)");
+
+    let link = storyButton.dataset.link;
+
+    if (favorites.find(item => item.link === link)) {
+        heart.textContent = "♥";
+    }
+
+    heart.addEventListener("click", function(){
+
+        let title = storyButton.textContent;
+        let image = card.querySelector("img").src;
+
+        let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+        let found = favorites.find(function(item){
+            return item.link === link;
+        });
+
+        if(found){
+
+            favorites = favorites.filter(function(item){
+                return item.link !== link;
+            });
+
+            heart.textContent = "♡";
+
+        }else{
+
+            favorites.push({
+                title:title,
+                image:image,
+                link:link
+            });
+
+            heart.textContent = "♥";
+
+        }
+
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+
+    });
+
+});
+
+// عرض عدد المشاهدات عند فتح الصفحة
+document.querySelectorAll(".card").forEach(function(card){
+
+    let button = card.querySelector("button:not(.heart):not(.share)");
+    let viewText = card.querySelector(".views");
+
+    let views = JSON.parse(localStorage.getItem("views")) || {};
+
+    let link = button.dataset.link;
+
+    viewText.textContent = "👁️ عدد المشاهدات: " + (views[link] || 0);
+
+});
+
+
+// ترتيب القصص حسب المشاهدات
+let hero = document.querySelector(".hero");
+let crds = Array.from(document.querySelectorAll(".card"));
+
+document.getElementById("mostViews").onclick = function(){
+
+    let views = JSON.parse(localStorage.getItem("views")) || {};
+
+    crds.sort(function(a, b){
+
+        let linkA = a.querySelector("button:not(.heart):not(.share)").dataset.link;
+        let linkB = b.querySelector("button:not(.heart):not(.share)").dataset.link;
+
+        let viewA = views[linkA] || 0;
+        let viewB = views[linkB] || 0;
+
+        return viewB - viewA;
+
+    });
+
+    crds.forEach(function(card){
+        hero.appendChild(card);
+    });
+
+};
+
+
+// الرجوع للترتيب الأصلي
+document.getElementById("allStories").onclick = function(){
+
+    crds.forEach(function(card){
+        hero.appendChild(card);
+    });
+
+};
+
+// زر المشاركة
+document.querySelectorAll(".share").forEach(function(btn){
+
+    btn.addEventListener("click", async function(e){
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        let card = this.parentElement;
+
+        let storyButton = card.querySelector("button:not(.heart):not(.share)");
+
+        let title = storyButton.textContent;
+        let link = location.origin + "/" + storyButton.dataset.link;
+
+        // إذا كان المتصفح يدعم المشاركة المباشرة
+        if (navigator.share) {
+
+            try {
+                await navigator.share({
+                    title: title,
+                    url: link
+                });
+            } catch (err) {
+                // المستخدم أغلق نافذة المشاركة
+            }
+
+        } else {
+
+            // إذا لم يدعم المشاركة، انسخ الرابط
+            navigator.clipboard.writeText(link);
+            alert("✅ تم نسخ رابط القصة");
+
+        }
+
+    });
+
+});
+
+</script>
+
+<script type="module" src="index.js"></script>
+
+</body>
+</html>

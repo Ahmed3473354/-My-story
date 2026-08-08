@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<style>
+
+
+.admin-messages {
+    width: 90%;
+    max-width: 900px;
+    margin: 35px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+}
+
+.admin-messages h2 {
+    margin: 0 0 25px;
+    text-align: center;
+    color: #4338ca;
+    font-size: 26px;
+}
+
+#messagesList {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.admin-message {
+    position: relative;
+    padding: 22px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 17px;
+    transition: 0.2s;
+}
+
+.admin-message:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.admin-message h3 {
+    margin: 0 0 12px;
+    color: #312e81;
+    font-size: 19px;
+}
+
+.admin-message p {
+    margin: 10px 0;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #ffffff;
+    line-height: 1.8;
+    color: #374151;
+    word-break: break-word;
+}
+
+.admin-message p:nth-of-type(1) {
+    color: #4f46e5;
+    direction: ltr;
+    text-align: left;
+}
+
+.admin-message p:nth-of-type(2) {
+    min-height: 60px;
+}
+
+.delete-message {
+    margin-top: 10px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 10px;
+    background: #dc2626;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.delete-message:hover {
+    background: #b91c1c;
+    transform: scale(1.03);
+}
+
+@media (max-width: 600px) {
+
+    .admin-messages {
+        width: 94%;
+        padding: 18px;
+        margin: 20px auto;
+    }
+
+    .admin-messages h2 {
+        font-size: 22px;
+    }
+
+    .admin-message {
+        padding: 17px;
+    }
+
+    .admin-message h3 {
+        font-size: 17px;
+    }
+
+    .admin-message p {
+        font-size: 14px;
+    }
+
+    .delete-message {
+        width: 100%;
+        padding: 11px;
+    }
+}
+
+</style>
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>لوحة التحكم</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <button id="logout">🚪 تسجيل خروج</button>
+
+
+<h1>📋 لوحة التعليقات</h1>
+
+
+<div id="adminComments"></div>
+
+<section class="admin-messages">
+
+    <h2>📩 رسائل الزوار</h2>
+
+    <div id="messagesList">
+        <!-- الرسائل ستظهر هنا -->
+    </div>
+
+</section>
+
+
+
+<script type="module" src="admin.js"></script>
+
+</body>
+
+</html>
+
+
+</body>
+</html>

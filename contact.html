@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تواصل معنا</title>
+</head>
+<body>
+    
+<style>
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: "Cairo", Arial, sans-serif;
+
+    background: linear-gradient(
+        135deg,
+        #eef2ff,
+        #f8fafc
+    );
+
+    color: #333;
+
+    direction: rtl;
+}
+
+
+/* الحاوية الرئيسية */
+.contact-container {
+    width: 92%;
+    max-width: 700px;
+
+    margin: 40px auto;
+
+    padding: 35px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border-radius: 25px;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* العنوان */
+.contact-container > h1 {
+    text-align: center;
+
+    color: #4338ca;
+
+    font-size: 32px;
+
+    margin: 0 0 25px;
+}
+
+
+/* المقدمة */
+.contact-intro {
+    padding: 22px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        135deg,
+        #eef2ff,
+        #f0fdfa
+    );
+}
+
+
+.contact-intro h2 {
+    margin-top: 0;
+
+    color: #4338ca;
+
+    font-size: 23px;
+}
+
+
+.contact-intro p {
+    margin-bottom: 0;
+
+    color: #4b5563;
+
+    line-height: 2;
+
+    font-size: 15px;
+}
+
+
+/* النموذج */
+.contact-form {
+    padding: 22px;
+
+    background: #fafafa;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 18px;
+}
+
+
+/* العناوين */
+.contact-form label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #4338ca;
+
+    font-weight: bold;
+
+    font-size: 15px;
+}
+
+
+/* input و textarea */
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+
+/* عند الضغط */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+
+/* الرسالة */
+.contact-form textarea {
+    height: 140px;
+
+    resize: vertical;
+
+    line-height: 1.8;
+}
+
+
+/* زر الإرسال */
+.contact-form button {
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #06b6d4
+    );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+/* حركة الزر */
+.contact-form button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 15px rgba(99, 102, 241, 0.25);
+}
+
+
+/* عند الضغط */
+.contact-form button:active {
+    transform: scale(0.98);
+}
+
+
+/* نتيجة الإرسال */
+#contactResult {
+    margin-top: 18px;
+
+    text-align: center;
+
+    font-weight: bold;
+
+    line-height: 1.8;
+}
+
+
+/* 📱 الموبايل */
+@media (max-width: 600px) {
+
+    .contact-container {
+        width: 94%;
+
+        margin: 20px auto;
+
+        padding: 18px;
+
+        border-radius: 20px;
+    }
+
+
+    .contact-container > h1 {
+        font-size: 26px;
+    }
+
+
+    .contact-intro {
+        padding: 17px;
+    }
+
+
+    .contact-intro h2 {
+        font-size: 20px;
+    }
+
+
+    .contact-intro p {
+        font-size: 14px;
+    }
+
+
+    .contact-form {
+        padding: 17px;
+    }
+
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 14px;
+    }
+
+
+    .contact-form textarea {
+        height: 120px;
+    }
+
+
+    .contact-form button {
+        font-size: 15px;
+    }
+}
+
+</style>
+
+<div class="contact-container">
+
+```
+<h1>📩 تواصل معنا</h1>
+
+<div class="contact-intro">
+    <h2>يسعدنا أن نسمع منك ❤️</h2>
+
+    <p>
+        إذا كان لديك سؤال أو اقتراح أو واجهت مشكلة أثناء استخدام الموقع،
+        يمكنك التواصل معنا من خلال النموذج التالي.
+    </p>
+</div>
+
+<form class="contact-form" id="contactForm">
+
+    <label for="contactName">👤 الاسم</label>
+    <input type="text" id="contactName" placeholder="اكتب اسمك">
+
+    <label for="contactEmail">📧 البريد الإلكتروني</label>
+    <input type="email" id="contactEmail" placeholder="example@email.com">
+
+    <label for="contactMessage">💬 الرسالة</label>
+    <textarea id="contactMessage" placeholder="اكتب رسالتك هنا..."></textarea>
+
+    <button type="submit">
+        📩 إرسال الرسالة
+    </button>
+
+</form>
+
+<div id="contactResult"></div>
+
+<script type="module" src="contact.js"></script>
+
+
+</div>
+
+
+</body>
+</html>

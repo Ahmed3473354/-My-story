@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قصص دينية</title>
+
+<style>
+
+.hero{
+    width:90%;
+    max-width:1400px;
+    margin:40px auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+
+.card{
+    width:280px;
+    text-align:center;
+    margin:auto;
+}
+
+
+.card img{
+
+    width:280px;
+    height:290px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+}
+
+
+/* زر القصة */
+
+.card > button:not(.heart){
+
+    width:280px;
+
+    margin-top:10px;
+
+    background:#1d4de8;
+
+    color:white;
+
+    padding:10px;
+
+    border-radius:9px;
+
+    border:none;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+
+.card > button:not(.heart):hover{
+
+    background:#1a40bf;
+
+}
+
+
+
+/* قلب المفضلة */
+
+.heart{
+
+    width:45px;
+
+    height:45px;
+
+    margin-top:10px;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:#e91e63;
+
+    border:2px solid #e91e63;
+
+    font-size:25px;
+
+    cursor:pointer;
+
+}
+
+
+.heart:hover{
+
+    background:#e91e63;
+
+    color:white;
+
+}
+
+
+
+/* البحث */
+
+#search{
+
+    display:block;
+
+    width:60%;
+
+    max-width:500px;
+
+    margin:30px auto;
+
+    padding:12px;
+
+    border:2px solid #1d4de8;
+
+    border-radius:15px;
+
+    font-size:18px;
+
+    outline:none;
+
+}
+
+
+
+/* التابلت */
+
+@media(max-width:900px){
+
+    .hero{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+
+
+/* الموبايل */
+
+@media(max-width:600px){
+
+    .hero{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .card{
+
+        width:100%;
+
+    }
+
+
+    .card img,
+
+    .card > button:not(.heart){
+
+        width:100%;
+
+    }
+
+
+    #search{
+
+        width:90%;
+
+    }
+
+}
+
+#mostViews,
+#allStories{
+    padding:12px 22px;
+    margin:15px 8px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:bold;
+    color:white;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+#mostViews{
+    background:linear-gradient(135deg,#ff9800,#ff5722);
+}
+
+#mostViews:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(255,87,34,.4);
+}
+
+#allStories{
+    background:linear-gradient(135deg,#2196f3,#3f51b5);
+}
+
+#allStories:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(33,150,243,.4);
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin:25px 0;
+}
+
+.share{
+    width:120px;
+    margin-top:10px;
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    background:#22c55e;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.share:hover{
+    background:#16a34a;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🕌 قصص دينية</h1>
+
+<input type="text" id="search" placeholder="ابحث عن قصة...">
+
+<div class="buttons">
+    <button id="mostViews">🔥 الأكثر مشاهدة</button>
+    <button id="allStories">📚 كل القصص</button>
+</div>
+
+<div class="hero">
+
+<div class="card">
+    <img src="rel/as.jpg" loading="lazy" alt="أصحاب الرس">
+    <button id="as" data-link="rel/1as.html">أصحاب الرس.. من هم القوم الذين أهلكهم الله؟</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="rel/tu.jpg" loading="lazy" alt="قصة تبع الحميري">
+    <button id="tu" data-link="rel/2tu.html">قصة تبع الحميري.. الملك الذي حيّر المؤرخين</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="rel/sa.jpg" loading="lazy" alt="أصحاب السبت">
+    <button id="sa" data-link="rel/3sa.html">أصحاب السبت.. لماذا تحولوا إلى قردة؟</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="rel/aad.jpg" loading="lazy" alt="قوم عاد وإرم ذات العماد">
+    <button id="aad" data-link="rel/4aad.html">قوم عاد.. أين اختفت مدينة إرم ذات العماد؟</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="rel/th.jpg" loading="lazy" alt="قوم ثمود وقصة الناقة">
+    <button id="th" data-link="rel/5th.html">قوم ثمود.. ماذا حدث بعد قتل الناقة؟</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="rel/ba.jpg" loading="lazy" alt="قصة بلعام بن باعوراء">
+    <button id="ba" data-link="rel/6ba.html">قصة بلعام بن باعوراء.. الرجل الذي ضاعت منه أعظم نعمة</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="rel/mo.jpg" loading="lazy" alt="مؤمن آل فرعون">
+    <button id="mo" data-link="rel/7mo.html">مؤمن آل فرعون.. الرجل الذي أخفى إيمانه سنوات</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="rel/ta.jpg" loading="lazy" alt="طالوت وجالوت وداود">
+    <button id="ta" data-link="rel/8ta.html">طالوت وجالوت.. كيف هزم داود أعظم محارب؟</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="rel/fe.jpg" loading="lazy" alt="قصة أصحاب الفيل وأبرهة">
+    <button id="fe" data-link="rel/9fe.html">أصحاب الفيل.. النهاية التي لم يتوقعها أبرهة</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="rel/dh.jpg" loading="lazy" alt="قصة ذو القرنين وسد يأجوج ومأجوج">
+    <button id="dh" data-link="rel/10dh.html">ذو القرنين.. الرحلة إلى سد يأجوج ومأجوج</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="rel/sal.jpg" loading="lazy" alt="قصة سلمان الفارسي ورحلة البحث عن الحق">
+    <button id="sal" data-link="rel/11sal.html">قصة سلمان الفارسي.. رحلة البحث عن الحق</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="rel/thu.jpg" loading="lazy" alt="قصة ثمامة بن أثال">
+    <button id="thu" data-link="rel/12thu.html">ثمامة بن أثال.. من عدو للإسلام إلى أحد أعظم المسلمين</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="rel/hu.jpg" loading="lazy" alt="قصة عبد الله بن حذافة السهمي">
+    <button id="hu" data-link="rel/13hu.html">عبد الله بن حذافة السهمي.. الصحابي الذي تحدى ملك الروم</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="rel/nae.jpg" loading="lazy" alt="قصة نعيم بن مسعود">
+    <button id="nae" data-link="rel/14nae.html">نعيم بن مسعود.. الرجل الذي فرّق جيش الأحزاب دون قتال</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="rel/qa.jpg" loading="lazy" alt="قصة القعقاع بن عمرو">
+    <button id="qa" data-link="rel/15qa.html">القعقاع بن عمرو.. الفارس الذي كان يعدل ألف رجل</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="rel/bar.jpg" loading="lazy" alt="قصة البراء بن مالك">
+    <button id="bar" data-link="rel/16bar.html">البراء بن مالك.. الصحابي الذي اقتحم الموت عشرات المرات</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="rel/am.jpg" loading="lazy" alt="فتح عمورية وقصة المعتصم">
+    <button id="am" data-link="rel/17am.html">فتح عمورية.. لماذا تحرك المعتصم بجيش ضخم من أجل امرأة؟</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+<div class="card">
+    <img src="rel/sh.jpg" loading="lazy" alt="معركة شقحب ضد المغول">
+    <button id="sh" data-link="rel/18sh.html">معركة شقحب.. كيف أوقف المسلمون المغول للمرة الأخيرة؟</button>
+    <p class="views">👁️ عدد المشاهدات: 0</p>
+    <button class="share">📤 مشاركة</button>
+    <button class="heart">♡</button>
+</div>
+
+</div>
+
+<script>
+
+// فتح القصة + حفظ آخر قصة + زيادة المشاهدات
+let buttons = document.querySelectorAll(".card button:not(.heart):not(.share)");
+
+buttons.forEach(function(button){
+
+    button.addEventListener("click", function(){
+
+        let link = button.dataset.link;
+
+        localStorage.setItem("lastStory", JSON.stringify({
+            title: button.textContent,
+            image: button.parentElement.querySelector("img").src,
+            link: link
+        }));
+
+        let views = JSON.parse(localStorage.getItem("views")) || {};
+
+        views[link] = (views[link] || 0) + 1;
+
+        localStorage.setItem("views", JSON.stringify(views));
+
+        let viewText = button.parentElement.querySelector(".views");
+        viewText.textContent = "👁️ عدد المشاهدات: " + views[link];
+
+        window.open(link);
+    });
+
+});
+
+
+// البحث
+let search = document.getElementById("search");
+let cards = document.querySelectorAll(".card");
+
+search.addEventListener("input", function(){
+
+    let value = search.value.toLowerCase();
+
+    cards.forEach(function(card){
+
+        let title = card.textContent.toLowerCase();
+
+        if(title.includes(value)){
+            card.style.display = "block";
+        }else{
+            card.style.display = "none";
+        }
+
+    });
+
+});
+
+
+// المفضلة
+let hearts = document.querySelectorAll(".heart");
+
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+hearts.forEach(function(heart){
+
+    let card = heart.parentElement;
+
+    let storyButton = card.querySelector("button:not(.heart):not(.share)");
+
+    let link = storyButton.dataset.link;
+
+    if (favorites.find(item => item.link === link)) {
+        heart.textContent = "♥";
+    }
+
+    heart.addEventListener("click", function(){
+
+        let title = storyButton.textContent;
+        let image = card.querySelector("img").src;
+
+        let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+        let found = favorites.find(function(item){
+            return item.link === link;
+        });
+
+        if(found){
+
+            favorites = favorites.filter(function(item){
+                return item.link !== link;
+            });
+
+            heart.textContent = "♡";
+
+        }else{
+
+            favorites.push({
+                title:title,
+                image:image,
+                link:link
+            });
+
+            heart.textContent = "♥";
+
+        }
+
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+
+    });
+
+});
+
+// عرض عدد المشاهدات عند فتح الصفحة
+document.querySelectorAll(".card").forEach(function(card){
+
+    let button = card.querySelector("button:not(.heart):not(.share)");
+    let viewText = card.querySelector(".views");
+
+    let views = JSON.parse(localStorage.getItem("views")) || {};
+
+    let link = button.dataset.link;
+
+    viewText.textContent = "👁️ عدد المشاهدات: " + (views[link] || 0);
+
+});
+
+
+// ترتيب القصص حسب المشاهدات
+let hero = document.querySelector(".hero");
+let crds = Array.from(document.querySelectorAll(".card"));
+
+document.getElementById("mostViews").onclick = function(){
+
+    let views = JSON.parse(localStorage.getItem("views")) || {};
+
+    crds.sort(function(a, b){
+
+        let linkA = a.querySelector("button:not(.heart):not(.share)").dataset.link;
+        let linkB = b.querySelector("button:not(.heart):not(.share)").dataset.link;
+
+        let viewA = views[linkA] || 0;
+        let viewB = views[linkB] || 0;
+
+        return viewB - viewA;
+
+    });
+
+    crds.forEach(function(card){
+        hero.appendChild(card);
+    });
+
+};
+
+
+// الرجوع للترتيب الأصلي
+document.getElementById("allStories").onclick = function(){
+
+    crds.forEach(function(card){
+        hero.appendChild(card);
+    });
+
+};
+
+// زر المشاركة
+document.querySelectorAll(".share").forEach(function(btn){
+
+    btn.addEventListener("click", async function(e){
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        let card = this.parentElement;
+
+        let storyButton = card.querySelector("button:not(.heart):not(.share)");
+
+        let title = storyButton.textContent;
+        let link = location.origin + "/" + storyButton.dataset.link;
+
+        // إذا كان المتصفح يدعم المشاركة المباشرة
+        if (navigator.share) {
+
+            try {
+                await navigator.share({
+                    title: title,
+                    url: link
+                });
+            } catch (err) {
+                // المستخدم أغلق نافذة المشاركة
+            }
+
+        } else {
+
+            // إذا لم يدعم المشاركة، انسخ الرابط
+            navigator.clipboard.writeText(link);
+            alert("✅ تم نسخ رابط القصة");
+
+        }
+
+    });
+
+});
+
+</script>
+
+<script type="module" src="index.js"></script>
+
+</body>
+</html>

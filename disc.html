@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قصص اكتشافات</title>
+
+<style>
+
+.hero{
+    width:90%;
+    max-width:1400px;
+    margin:40px auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+
+.card{
+    width:280px;
+    text-align:center;
+    margin:auto;
+}
+
+
+.card img{
+
+    width:280px;
+    height:290px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+}
+
+
+/* زر القصة */
+
+.card > button:not(.heart){
+
+    width:280px;
+
+    margin-top:10px;
+
+    background:#1d4de8;
+
+    color:white;
+
+    padding:10px;
+
+    border-radius:9px;
+
+    border:none;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+
+.card > button:not(.heart):hover{
+
+    background:#1a40bf;
+
+}
+
+
+
+/* قلب المفضلة */
+
+.heart{
+
+    width:45px;
+
+    height:45px;
+
+    margin-top:10px;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:#e91e63;
+
+    border:2px solid #e91e63;
+
+    font-size:25px;
+
+    cursor:pointer;
+
+}
+
+
+.heart:hover{
+
+    background:#e91e63;
+
+    color:white;
+
+}
+
+
+
+/* البحث */
+
+#search{
+
+    display:block;
+
+    width:60%;
+
+    max-width:500px;
+
+    margin:30px auto;
+
+    padding:12px;
+
+    border:2px solid #1d4de8;
+
+    border-radius:15px;
+
+    font-size:18px;
+
+    outline:none;
+
+}
+
+
+
+/* التابلت */
+
+@media(max-width:900px){
+
+    .hero{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+
+
+/* الموبايل */
+
+@media(max-width:600px){
+
+    .hero{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .card{
+
+        width:100%;
+
+    }
+
+
+    .card img,
+
+    .card > button:not(.heart){
+
+        width:100%;
+
+    }
+
+
+    #search{
+
+        width:90%;
+
+    }
+
+}
+
+#mostViews,
+#allStories{
+    padding:12px 22px;
+    margin:15px 8px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:bold;
+    color:white;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+#mostViews{
+    background:linear-gradient(135deg,#ff9800,#ff5722);
+}
+
+#mostViews:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(255,87,34,.4);
+}
+
+#allStories{
+    background:linear-gradient(135deg,#2196f3,#3f51b5);
+}
+
+#allStories:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(33,150,243,.4);
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin:25px 0;
+}
+
+.share{
+    width:120px;
+    margin-top:10px;
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    background:#22c55e;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.share:hover{
+    background:#16a34a;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<input type="text" id="search" placeholder="ابحث عن قصة...">
+
+<div class="buttons">
+    <button id="mostViews">🔥 الأكثر مشاهدة</button>
+    <button id="allStories">📚 كل القصص</button>
+</div>
+<div class="hero">
+
+
+<div class="card">
+<img src="imag/man.jpg" alt="الرجل الذي اخترع غواصة قبل 400 عام">
+<button id="man" data-link="disc/mantu.html" data-title="الرجل الذي سبق عصره واخترع غواصة قبل 400 عام">الرجل الذي سبق عصره واخترع غواصة قبل 400 عام</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="imag/city.jpg" alt="اكتشاف الأشعة السينية بالصدفة">
+<button id="city" data-link="disc/2citytu.html" data-title="كيف اكتشف العلماء الأشعة السينية بالصدفة وغيروا عالم الطب للأبد">كيف اكتشف العلماء الأشعة السينية بالصدفة وغيروا عالم الطب للأبد</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="imag/sig.jpg" alt="إشارة غامضة قادمة من الفضاء">
+<button id="sig" data-link="disc/3sigtu.html" data-title="الإشارة الغامضة القادمة من الفضاء التي كشفت سر الكون">الإشارة الغامضة القادمة من الفضاء التي كشفت سر الكون</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="imag/mis.jpg" alt="اختراع جهاز يطبخ الطعام في ثوان">
+<button id="mis" data-link="disc/4mistu.html" data-title="الخطأ الصغير الذي اخترع جهازًا يطبخ الطعام في ثوانٍ">الخطأ الصغير الذي اخترع جهازًا يطبخ الطعام في ثوانٍ</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="imag/ant.jpg" alt="اكتشاف المادة المضادة">
+<button id="ant" data-link="disc/5anttu.html" data-title="اكتشاف المادة المضادة... أغرب شيء عرفه العلم">اكتشاف المادة المضادة... أغرب شيء عرفه العلم</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="imag/lens.jpg" alt="عدسة تكشف العالم المجهري">
+<button id="lens" data-link="disc/6lenstu.html" data-title="العدسة الصغيرة التي كشفت عالمًا لا يراه البشر">العدسة الصغيرة التي كشفت عالمًا لا يراه البشر</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="imag/jour.jpg" alt="رحلة إلى أعمق مكان على الأرض">
+<button id="jour" data-link="disc/7jourtu.html" data-title="رحلة إلى أعمق مكان على الأرض حيث لا يصل الضوء">رحلة إلى أعمق مكان على الأرض حيث لا يصل الضوء</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="imag/par.jpg" alt="جسيمات تكشف أسرار بناء الكون">
+<button id="par" data-link="disc/8partu.html" data-title="الجسيمات السرية التي تكشف أسرار بناء الكون">الجسيمات السرية التي تكشف أسرار بناء الكون</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="imag/sci.jpg" alt="العالم الذي اكتشف حركة القارات">
+<button id="sci" data-link="disc/9scitu.html" data-title="العالم الذي قال إن القارات تتحرك... فضحك عليه الجميع">العالم الذي قال إن القارات تتحرك... فضحك عليه الجميع</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="imag/tes.jpg" alt="نيكولا تسلا وتجربة نقل الكهرباء عبر الهواء">
+<button id="tes" data-link="disc/10testu.html" data-title="اختراع تسلا السري الذي حاول نقل الكهرباء عبر الهواء">اختراع تسلا السري الذي حاول نقل الكهرباء عبر الهواء</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="imag/plas.jpg" alt="اختراع جعل الإنسان يرى النجوم بوضوح">
+<button id="plas" data-link="disc/11plastu.html" data-title="الاختراع الذي جعل الإنسان يرى النجوم كما لم يرها أحد من قبل">الاختراع الذي جعل الإنسان يرى النجوم كما لم يرها أحد من قبل</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="imag/bac.jpg" alt="اكتشاف البنسلين بالصدفة">
+<button id="bac" data-link="disc/12bactu.html" data-title="العالم الذي اكتشف البنسلين بالصدفة وأنقذ مئات الملايين من البشر">العالم الذي اكتشف البنسلين بالصدفة وأنقذ مئات الملايين من البشر</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="imag/volc.jpg" alt="المعدن الذي كان أغلى من الذهب">
+<button id="volc" data-link="disc/13volctu.html" data-title="المعدن الذي كان أغلى من الذهب ثم أصبح في كل منزل">المعدن الذي كان أغلى من الذهب ثم أصبح في كل منزل</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="imag/din.jpg" alt="اختراع أول هاتف في التاريخ">
+<button id="din" data-link="disc/14dintu.html" data-title="السباق المجنون لاختراع أول هاتف في التاريخ... ومن سرق الفكرة؟">السباق المجنون لاختراع أول هاتف في التاريخ... ومن سرق الفكرة؟</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="imag/radio.jpg" alt="اكتشاف موجات الراديو">
+<button id="radio" data-link="disc/15radiotu.html" data-title="الحرب السرية لاكتشاف موجات الراديو التي غيّرت العالم">الحرب السرية لاكتشاف موجات الراديو التي غيّرت العالم</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="imag/cave.jpg" alt="كهف يكشف أسرار الإنسان الأول">
+<button id="cave" data-link="disc/16cavetu.html" data-title="الكهف الذي كشف أسرار الإنسان الأول">الكهف الذي كشف أسرار الإنسان الأول</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="imag/pla.jpg" alt="الكوكب المفقود في أطراف النظام الشمسي">
+<button id="pla" data-link="disc/17platu.html" data-title="الكوكب المفقود في أطراف النظام الشمسي... هل هو موجود؟">الكوكب المفقود في أطراف النظام الشمسي... هل هو موجود؟</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+
+<div class="card">
+<img src="imag/bat.jpg" alt="البطارية الأولى في التاريخ">
+<button id="bat" data-link="disc/18battu.html" data-title="البطارية الأولى في التاريخ... الاختراع الذي سبق عصره">البطارية الأولى في التاريخ... الاختراع الذي سبق عصره</button>
+<p class="views">👁️ عدد المشاهدات: 0</p>
+<button class="share">📤 مشاركة</button>
+<button class="heart">♡</button>
+</div>
+```
+
+
+
+</div>
+
+<script>
+
+
+
+// فتح القصة + حفظ آخر قصة + زيادة المشاهدات
+let buttons = document.querySelectorAll(".card button:not(.heart):not(.share)");
+
+buttons.forEach(function(button){
+
+    button.addEventListener("click", function(){
+
+        let link = button.dataset.link;
+
+        localStorage.setItem("lastStory", JSON.stringify({
+            title: button.textContent,
+            image: button.parentElement.querySelector("img").src,
+            link: link
+        }));
+
+        let views = JSON.parse(localStorage.getItem("views")) || {};
+
+        views[link] = (views[link] || 0) + 1;
+
+        localStorage.setItem("views", JSON.stringify(views));
+
+        let viewText = button.parentElement.querySelector(".views");
+        viewText.textContent = "👁️ عدد المشاهدات: " + views[link];
+
+        window.open(link);
+    });
+
+});
+
+
+// البحث
+let search = document.getElementById("search");
+let cards = document.querySelectorAll(".card");
+
+search.addEventListener("input", function(){
+
+    let value = search.value.toLowerCase();
+
+    cards.forEach(function(card){
+
+        let title = card.textContent.toLowerCase();
+
+        if(title.includes(value)){
+            card.style.display = "block";
+        }else{
+            card.style.display = "none";
+        }
+
+    });
+
+});
+
+
+// المفضلة
+let hearts = document.querySelectorAll(".heart");
+
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+hearts.forEach(function(heart){
+
+    let card = heart.parentElement;
+
+    let storyButton = card.querySelector("button:not(.heart):not(.share)");
+
+    let link = storyButton.dataset.link;
+
+    if (favorites.find(item => item.link === link)) {
+        heart.textContent = "♥";
+    }
+
+    heart.addEventListener("click", function(){
+
+        let title = storyButton.textContent;
+        let image = card.querySelector("img").src;
+
+        let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+        let found = favorites.find(function(item){
+            return item.link === link;
+        });
+
+        if(found){
+
+            favorites = favorites.filter(function(item){
+                return item.link !== link;
+            });
+
+            heart.textContent = "♡";
+
+        }else{
+
+            favorites.push({
+                title:title,
+                image:image,
+                link:link
+            });
+
+            heart.textContent = "♥";
+
+        }
+
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+
+    });
+
+});
+
+// عرض عدد المشاهدات عند فتح الصفحة
+document.querySelectorAll(".card").forEach(function(card){
+
+    let button = card.querySelector("button:not(.heart):not(.share)");
+    let viewText = card.querySelector(".views");
+
+    let views = JSON.parse(localStorage.getItem("views")) || {};
+
+    let link = button.dataset.link;
+
+    viewText.textContent = "👁️ عدد المشاهدات: " + (views[link] || 0);
+
+});
+
+
+// ترتيب القصص حسب المشاهدات
+let hero = document.querySelector(".hero");
+let crds = Array.from(document.querySelectorAll(".card"));
+
+document.getElementById("mostViews").onclick = function(){
+
+    let views = JSON.parse(localStorage.getItem("views")) || {};
+
+    crds.sort(function(a, b){
+
+        let linkA = a.querySelector("button:not(.heart):not(.share)").dataset.link;
+        let linkB = b.querySelector("button:not(.heart):not(.share)").dataset.link;
+
+        let viewA = views[linkA] || 0;
+        let viewB = views[linkB] || 0;
+
+        return viewB - viewA;
+
+    });
+
+    crds.forEach(function(card){
+        hero.appendChild(card);
+    });
+
+};
+
+
+// الرجوع للترتيب الأصلي
+document.getElementById("allStories").onclick = function(){
+
+    crds.forEach(function(card){
+        hero.appendChild(card);
+    });
+
+};
+
+// زر المشاركة
+document.querySelectorAll(".share").forEach(function(btn){
+
+    btn.addEventListener("click", async function(e){
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        let card = this.parentElement;
+
+        let storyButton = card.querySelector("button:not(.heart):not(.share)");
+
+        let title = storyButton.textContent;
+        let link = location.origin + "/" + storyButton.dataset.link;
+
+        // إذا كان المتصفح يدعم المشاركة المباشرة
+        if (navigator.share) {
+
+            try {
+                await navigator.share({
+                    title: title,
+                    url: link
+                });
+            } catch (err) {
+                // المستخدم أغلق نافذة المشاركة
+            }
+
+        } else {
+
+            // إذا لم يدعم المشاركة، انسخ الرابط
+            navigator.clipboard.writeText(link);
+            alert("✅ تم نسخ رابط القصة");
+
+        }
+
+    });
+
+});
+
+</script>
+
+<script type="module" src="index.js"></script>
+
+</body>
+</html>

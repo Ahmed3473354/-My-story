@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>من نحنt</title>
+</head>
+<body>
+
+    <style>
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Cairo", Arial, sans-serif;
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    color: #333;
+    direction: rtl;
+}
+
+/* الحاوية الرئيسية */
+.about-container {
+    width: 92%;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 35px;
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border-radius: 25px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    border: 1px solid #e5e7eb;
+}
+
+/* العنوان الرئيسي */
+.about-container > h1 {
+    text-align: center;
+
+    color: #4338ca;
+
+    font-size: 32px;
+
+    margin: 0 0 25px;
+}
+
+/* المقدمة */
+.about-intro {
+    background: linear-gradient(
+        135deg,
+        #eef2ff,
+        #f0fdfa
+    );
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+.about-intro h2 {
+    color: #4338ca;
+
+    margin-top: 0;
+
+    font-size: 24px;
+}
+
+.about-intro p {
+    line-height: 2;
+
+    color: #4b5563;
+
+    font-size: 16px;
+}
+
+/* الأقسام */
+.about-section {
+    margin-top: 20px;
+
+    padding: 22px;
+
+    background: #fafafa;
+
+    border-radius: 18px;
+
+    border: 1px solid #eeeeee;
+
+    transition: 0.3s;
+}
+
+/* حركة عند مرور الماوس */
+.about-section:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* عناوين الأقسام */
+.about-section h2 {
+    margin: 0 0 15px;
+
+    color: #4338ca;
+
+    font-size: 21px;
+
+    border-right: 4px solid #6366f1;
+
+    padding-right: 12px;
+}
+
+/* النصوص */
+.about-section p {
+    margin: 10px 0;
+
+    line-height: 2;
+
+    font-size: 16px;
+
+    color: #4b5563;
+}
+
+/* القائمة */
+.about-section ul {
+    margin: 15px 0;
+
+    padding: 15px 35px;
+
+    background: #ffffff;
+
+    border-radius: 15px;
+
+    border: 1px solid #eeeeee;
+
+    line-height: 2;
+}
+
+.about-section li {
+    margin: 7px 0;
+
+    color: #4b5563;
+
+    list-style: none;
+}
+
+/* النهاية */
+.about-footer {
+    margin-top: 30px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        #eef2ff,
+        #ecfeff
+    );
+
+    color: #3730a3;
+
+    border-radius: 18px;
+
+    font-weight: bold;
+
+    font-size: 17px;
+}
+
+
+/* 📱 الموبايل */
+@media (max-width: 600px) {
+
+    .about-container {
+        width: 94%;
+
+        margin: 20px auto;
+
+        padding: 18px;
+
+        border-radius: 20px;
+    }
+
+    .about-container > h1 {
+        font-size: 26px;
+    }
+
+    .about-intro {
+        padding: 18px;
+    }
+
+    .about-intro h2 {
+        font-size: 20px;
+    }
+
+    .about-intro p {
+        font-size: 14px;
+    }
+
+    .about-section {
+        padding: 17px;
+
+        border-radius: 15px;
+    }
+
+    .about-section h2 {
+        font-size: 18px;
+    }
+
+    .about-section p,
+    .about-section li {
+        font-size: 14px;
+    }
+
+    .about-section ul {
+        padding: 12px 20px;
+    }
+
+    .about-footer {
+        font-size: 14px;
+    }
+}
+
+    </style>
+    
+<div class="about-container">
+
+```
+<h1>📖 من نحن</h1>
+
+<div class="about-intro">
+    <h2>مرحبًا بك في عالم القصص 🌟</h2>
+
+    <p>
+        موقعنا هو مساحة تجمع القصص الممتعة والمعلومات المثيرة
+        في مكان واحد، ونسعى إلى تقديم محتوى أصلي ومتنوع
+        يناسب محبي القراءة والاستكشاف.
+    </p>
+</div>
+
+<section class="about-section">
+    <h2>🎯 ما هدف الموقع؟</h2>
+
+    <p>
+        هدفنا هو تقديم قصص ممتعة ومفيدة بطريقة بسيطة وجذابة،
+        ومساعدة الزائر على اكتشاف قصص جديدة في مجالات مختلفة.
+    </p>
+</section>
+
+<section class="about-section">
+    <h2>📚 ماذا نقدم؟</h2>
+
+    <p>
+        يحتوي الموقع على مجموعة متنوعة من القصص، مثل:
+    </p>
+
+    <ul>
+        <li>📜 القصص التاريخية</li>
+        <li>🕌 القصص الدينية</li>
+        <li>🌍 قصص المغامرات</li>
+        <li>🔬 القصص والحقائق الغريبة</li>
+        <li>✨ القصص الخيالية</li>
+    </ul>
+</section>
+
+<section class="about-section">
+    <h2>💡 لماذا أنشأنا الموقع؟</h2>
+
+    <p>
+        أنشأنا الموقع لأننا نؤمن بأن القراءة يمكن أن تكون ممتعة
+        ومشوقة، ونريد أن نجعل الوصول إلى القصص المختلفة
+        تجربة سهلة وممتعة للزائر.
+    </p>
+</section>
+
+<section class="about-section">
+    <h2>🤝 مشاركتك تهمنا</h2>
+
+    <p>
+        يمكنك مشاركة رأيك أو اقتراح قصة جديدة من خلال صفحة
+        التواصل معنا، حيث تساعدنا اقتراحات الزوار على تطوير
+        الموقع وإضافة محتوى أفضل.
+    </p>
+</section>
+
+<div class="about-footer">
+    ❤️ شكرًا لزيارتك وثقتك بنا
+</div>
+```
+
+</div>
+
+
+</body>
+</html>

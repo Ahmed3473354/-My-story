@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>عالم القصص</title>
+
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#111827">
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f5f7fa;
+}
+
+
+h1{
+    text-align:center;
+    margin:30px;
+    font-size:40px;
+}
+
+
+/* الحاوية */
+
+#photo{
+
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:50px;
+
+    justify-items:center;
+
+}
+
+
+/* الكارت */
+
+.card{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+
+}
+
+
+/* الصور */
+
+.card img{
+
+    width:145px;
+    height:200px;
+
+    object-fit:cover;
+
+    border-radius:8px;
+
+}
+
+
+/* الأزرار */
+
+button{
+
+    width:180px;
+
+    padding:8px 10px;
+
+    border-radius:8px;
+
+    background-color:#1d4de8;
+
+    color:white;
+
+    cursor:pointer;
+
+    border:2px solid rgb(199,195,195);
+
+    font-size:16px;
+
+}
+
+
+button:hover{
+
+    background-color:#1c43c4;
+
+    border-color:#1c43c4;
+
+}
+
+
+/* التابلت */
+
+@media(max-width:900px){
+
+#photo{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+
+/* الهاتف */
+
+@media(max-width:600px){
+
+#photo{
+
+grid-template-columns:1fr;
+
+}
+
+
+h1{
+
+font-size:30px;
+
+}
+
+
+}
+
+#search{
+    display:block;
+    width:60%;
+    max-width:500px;
+    padding:12px;
+    margin:30px auto;
+
+    border:2px solid #1d4de8;
+    border-radius:15px;
+
+    font-size:18px;
+    outline:none;
+}
+
+#search:focus{
+    border-color:#0d6efd;
+}
+
+
+@media(max-width:600px){
+
+    #search{
+        width:90%;
+    }
+
+}
+
+#lastStory{
+    width:90%;
+    max-width:320px;
+    margin:30px auto;
+    text-align:center;
+}
+
+#lastStory img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+#lastStory button{
+    width:100%;
+    margin-top:10px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin:25px 0;
+}
+
+ .comments-box {
+
+    width: 90%;
+    min-width: 300px;
+
+    margin: 40px auto;
+    padding: 20px;
+
+    background: linear-gradient(145deg,#ffffff,#f4f7ff);
+
+    border-radius: 22px;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+
+}
+
+
+/* العنوان */
+
+.comments-box h2 {
+
+    text-align: center;
+
+    color: #333;
+
+    font-size: 20px;
+
+    margin-bottom: 18px;
+
+}
+
+
+/* input و textarea */
+
+#name,
+#comment {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px;
+
+    margin-bottom: 12px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 14px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    background: white;
+
+    transition: .3s;
+
+}
+
+
+#name:focus,
+#comment:focus {
+
+    border-color: #6366f1;
+
+    box-shadow: 0 0 8px rgba(99,102,241,.25);
+
+}
+
+
+/* textarea */
+
+#comment {
+
+    height: 90px;
+
+    resize: none;
+
+}
+
+
+/* زر الإرسال */
+
+#sendComment {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 14px;
+
+
+    background: linear-gradient(135deg,#6366f1,#06b6d4);
+
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+#sendComment:hover {
+
+    transform: translateY(-2px);
+
+}
+
+
+/* مكان التعليقات */
+
+#comments {
+
+    margin-top: 15px;
+
+  
+
+}
+
+
+/* التعليق */
+
+.comment {
+
+    background:white;
+
+    padding:14px;
+
+    margin-top:10px;
+
+
+    border-radius:15px;
+
+    border-right:4px solid #6366f1;
+
+
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
+
+    animation:showComment .3s ease;
+
+}
+
+
+.comment strong {
+
+    color:#6366f1;
+
+}
+
+
+/* الحركة */
+
+@keyframes showComment {
+
+from{
+
+opacity:0;
+
+transform:translateY(15px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+#showAllComments {
+
+    width:100%;
+
+    margin-top:15px;
+
+    padding:10px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#e0e7ff;
+
+    color:#4338ca;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+#comments.hide-more {
+    max-height: 220px;
+    overflow: hidden;
+}
+
+.likeArea{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:12px;
+}
+
+.heart{
+    display:inline-block;
+    font-size:28px;
+    cursor:pointer;
+    user-select:none;
+    transition:0.25s;
+}
+
+.heart:hover{
+    transform:scale(1.2);
+}
+
+.likesCount{
+    font-size:16px;
+    font-weight:bold;
+}
+
+#privacyBtn {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 12px;
+    background-color: aliceblue;
+    color: black;
+    font-size: 15px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+#privacyBtn:hover {
+    transform: translateY(-2px);
+    opacity: .9;
+    background-color:#1d4de8;
+    color: aliceblue;
+    transition: 1s;
+}
+
+#about {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    
+    padding: 10px 22px;
+    
+    background-color: #f4f7ff;
+    color: black;
+    
+    font-size: 20px;
+    
+    border: 1px solid #f8ecec;
+    border-radius: 10px;
+    
+    cursor: pointer;
+    
+    transition: 0.4s;
+}
+
+#about:hover {
+    background-color: #1c43c4;
+    color: aliceblue;
+}
+
+.r {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#conect {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    margin-left: 10px;
+    padding: 10px 22px;
+    
+    
+    background-color: #f4f7ff;
+    color: black;
+    
+    font-size: 20px;
+    
+    border: 1px solid #f8ecec;
+    border-radius: 10px;
+    
+    cursor: pointer;
+    
+    transition: 0.4s;
+}
+
+#conect:hover {
+    background-color: #1c43c4;
+    color: aliceblue;
+}
+
+
+/* 📱 الموبايل */
+@media (max-width: 600px) {
+
+    #about,
+    #conect {
+        font-size: 16px;
+        padding: 9px 16px;
+        margin: 12px auto;
+    }
+
+}
+</style>
+
+</head>
+
+<body>
+
+    <div class="buttons">
+
+    <button id="installBtn" style="display:none;">
+        📲 تنزيل الموقع
+    </button>
+</div>
+
+<h1>📚 عالم القصص</h1>
+
+<button id="favorite">❤️ المفضلة</button>
+
+<input type="text" id="search" placeholder="ابحث عن قصة...">
+
+<div id="lastStory"></div>
+
+<div id="photo">
+
+    <div class="card">
+
+<img src="rel.jpg" alt="قصص دينية">
+
+<button id="rel">
+قصص دينية
+</button>
+
+</div>
+
+
+<div class="card">
+
+<img src="baby.jpg" alt="قصص أطفال">
+
+<button id="baby">
+قصص أطفال
+</button>
+
+</div>
+
+
+<div class="card">
+
+<img src="hist.jpg" alt="قصص تاريخية">
+
+<button id="hist">
+قصص تاريخية
+</button>
+
+</div>
+
+
+<div class="card">
+
+<img src="imag.jpg" alt="قصص خيالية">
+
+<button id="imag">
+قصص خيالية
+</button>
+
+</div>
+
+
+<div class="card">
+
+<img src="disc.jpg" alt="قصص اكتشافات">
+
+<button id="disc">
+قصص اكتشافات
+</button>
+
+</div>
+
+
+<div class="card">
+
+<img src="adv.jpg" alt="قصص مغامرات">
+
+<button id="adv">
+قصص مغامرات
+</button>
+
+</div>
+
+
+</div>
+
+
+<div class="comments-box">
+
+<h2>💬 آراء واقتراحات الزوار</h2>
+
+<input type="text" id="name" placeholder="اسمك (اختياري)">
+
+<textarea id="comment" placeholder="اكتب تعليقك أو اقترح قصة..."></textarea>
+
+<button type="button" id="sendComment">
+📩 إرسال التعليق
+</button>
+
+<div id="comments"></div>
+
+<button id="showAllComments">
+📖 عرض كل التعليقات
+</button>
+
+</div>
+
+<h2 class="r">
+👥 عدد الزوار:
+<span id="visitorCount">0</span>
+</h2>
+
+<button id="privacyBtn">🔒 سياسة الخصوصية</button> 
+ <button id="about">من نحن</button>
+  <button id="conect">تولصل معنا</button>
+
+<script type="module" src="firebase.js"></script>
+<script type="module" src="index.js"></script>
+
+
+</body>
+
+</html>
