@@ -3,14 +3,11 @@
 <head>
 
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-
 <script>
   window.OneSignalDeferred = window.OneSignalDeferred || [];
-
-  OneSignalDeferred.push(function(OneSignal) {
-    OneSignal.init({
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
       appId: "82b72d60-629d-496e-8bd1-5b0364286cc1",
-      allowLocalhostAsSecureOrigin: true,
     });
   });
 </script>
