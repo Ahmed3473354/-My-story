@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ahmed3473354.github.io/-My-story/sitemap.xml
